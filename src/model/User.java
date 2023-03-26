@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.IllegalEmailFormatException;
+
 import java.util.Objects;
 
 public class User implements Comparable<User> {
@@ -46,9 +48,9 @@ public class User implements Comparable<User> {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalEmailFormatException {
         if (email.endsWith(".ru")) {
-            System.out.println("Ru nie mozna");
+            throw new IllegalEmailFormatException("In correct email format");
         } else {
             this.email = email;
         }
